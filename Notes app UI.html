@@ -41,21 +41,17 @@
           sans-serif;
       }
 
-      /* Dark theme: same tokens, different values */
       @media (prefers-color-scheme: dark) {
         :root {
           --bg: #161614;
           --surface: #1e1e1b;
           --sidebar: #1a1a18;
           --border: #34332e;
-
           --text: #ecebe6;
           --muted: #9a968c;
-
           --accent: #f0bd1a;
           --accent-soft: #3a3212;
           --selected: #3a3314;
-
           --work: #7fa6e0;
           --personal: #d99a73;
           --danger: #e8776b;
@@ -65,16 +61,8 @@
       /* =========================================================
        2. BASE / RESET
        ========================================================= */
-      * {
-        box-sizing: border-box;
-      }
-
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-      }
-
+      * { box-sizing: border-box; }
+      html, body { height: 100%; margin: 0; }
       body {
         background: var(--bg);
         color: var(--text);
@@ -82,35 +70,20 @@
         line-height: 1.5;
         overflow: hidden;
       }
-
-      button {
-        font: inherit;
-        color: inherit;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
+      button { font: inherit; color: inherit; }
+      a { color: inherit; text-decoration: none; }
       :focus-visible {
         outline: 3px solid var(--accent);
         outline-offset: 2px;
         border-radius: 6px;
       }
-
-      /* Visually hidden, still read by screen readers */
       .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-        clip: rect(0 0 0 0);
-        white-space: nowrap;
+        position: absolute; width: 1px; height: 1px;
+        overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
       }
 
       /* =========================================================
-       3. APP GRID  (desktop: sidebar | list | detail)
+       3. APP GRID
        ========================================================= */
       .app {
         display: grid;
@@ -122,483 +95,139 @@
        4. SIDEBAR
        ========================================================= */
       .sidebar {
-        display: flex;
-        flex-direction: column;
-        padding: 16px 12px;
-        background: var(--sidebar);
-        border-right: 1px solid var(--border);
+        display: flex; flex-direction: column; padding: 16px 12px;
+        background: var(--sidebar); border-right: 1px solid var(--border);
         overflow-y: auto;
       }
-
       .brand {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 4px 8px 16px;
-        font-weight: 700;
-        font-size: 1.15rem;
+        display: flex; align-items: center; gap: 10px;
+        padding: 4px 8px 16px; font-weight: 700; font-size: 1.15rem;
       }
-
       .brand-icon {
-        display: grid;
-        place-items: center;
-        width: 32px;
-        height: 32px;
-        border-radius: 9px;
-        background: var(--accent);
-        color: #2b2200;
-        font-size: 1.1rem;
+        display: grid; place-items: center; width: 32px; height: 32px;
+        border-radius: 9px; background: var(--accent); color: #2b2200; font-size: 1.1rem;
       }
-
       .nav-label {
-        padding: 14px 10px 6px;
-        font-size: 0.72rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--muted);
+        padding: 14px 10px 6px; font-size: 0.72rem; letter-spacing: 0.08em;
+        text-transform: uppercase; color: var(--muted);
       }
-
       .nav a {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 9px 10px;
-        border-radius: 9px;
-        color: var(--text);
+        display: flex; align-items: center; gap: 10px; padding: 9px 10px;
+        border-radius: 9px; color: var(--text);
       }
-
-      .nav a:hover {
-        background: rgba(127, 127, 127, 0.12);
-      }
-
-      .nav a[aria-current="page"] {
-        background: var(--accent-soft);
-        font-weight: 600;
-      }
-
-      .nav .ico {
-        width: 22px;
-        text-align: center;
-      }
-
+      .nav a:hover { background: rgba(127, 127, 127, 0.12); }
+      .nav a[aria-current="page"] { background: var(--accent-soft); font-weight: 600; }
+      .nav .ico { width: 22px; text-align: center; }
       .nav .count {
-        margin-left: auto;
-        font-size: 0.8rem;
-        color: var(--muted);
-        font-variant-numeric: tabular-nums;
+        margin-left: auto; font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums;
       }
-
-      .side-foot {
-        margin-top: auto;
-        padding: 14px 10px 0;
-        font-size: 0.78rem;
-        color: var(--muted);
-      }
+      .side-foot { margin-top: auto; padding: 14px 10px 0; font-size: 0.78rem; color: var(--muted); }
 
       /* =========================================================
-       5. LIST PANE  (header, search box, note rows)
+       5. LIST PANE
        ========================================================= */
       .list-pane {
-        display: flex;
-        flex-direction: column;
-        min-width: 0;
-        min-height: 0;
-        background: var(--surface);
-        border-right: 1px solid var(--border);
+        display: flex; flex-direction: column; min-width: 0; min-height: 0;
+        background: var(--surface); border-right: 1px solid var(--border);
       }
-
-      .list-head {
-        padding: 14px 14px 10px;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .top-row {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 10px;
-      }
-
+      .list-head { padding: 14px 14px 10px; border-bottom: 1px solid var(--border); }
+      .top-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
       .menu-btn {
-        display: none; /* shown on tablet/phone only */
-        width: 40px;
-        height: 40px;
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        background: var(--surface);
-        font-size: 1.2rem;
-        cursor: pointer;
+        display: none; width: 40px; height: 40px; border: 1px solid var(--border);
+        border-radius: 10px; background: var(--surface); font-size: 1.2rem; cursor: pointer;
       }
-
-      .list-title {
-        margin: 0;
-        font-size: 1.35rem;
-        font-weight: 700;
-      }
-
-      .list-sub {
-        margin-left: auto;
-        font-size: 0.85rem;
-        color: var(--muted);
-      }
-
-      /* Search box */
-      .search {
-        position: relative;
-      }
-
+      .list-title { margin: 0; font-size: 1.35rem; font-weight: 700; }
+      .list-sub { margin-left: auto; font-size: 0.85rem; color: var(--muted); }
+      
+      .search { position: relative; }
       .search input {
-        width: 100%;
-        padding: 10px 36px 10px 38px;
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        background: var(--bg);
-        color: var(--text);
-        font: inherit;
+        width: 100%; padding: 10px 36px 10px 38px; border: 1px solid var(--border);
+        border-radius: 10px; background: var(--bg); color: var(--text); font: inherit;
       }
-
-      .search .s-ico {
-        position: absolute;
-        left: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--muted);
-        pointer-events: none;
-      }
-
+      .search .s-ico { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
       .search .clear {
-        display: none; /* shown once there is a query */
-        position: absolute;
-        right: 6px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 30px;
-        height: 30px;
-        border: 0;
-        border-radius: 8px;
-        background: none;
-        color: var(--muted);
-        cursor: pointer;
+        display: none; position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+        width: 30px; height: 30px; border: 0; border-radius: 8px; background: none; color: var(--muted); cursor: pointer;
       }
+      .search.has-q .clear { display: block; }
 
-      .search.has-q .clear {
-        display: block;
-      }
-
-      /* Note rows */
-      .notes {
-        flex: 1;
-        list-style: none;
-        margin: 0;
-        padding: 6px;
-        overflow-y: auto;
-      }
-
-      .note-item a {
-        display: block;
-        margin-bottom: 2px;
-        padding: 11px 12px;
-        border-radius: 10px;
-      }
-
-      .note-item a:hover {
-        background: rgba(127, 127, 127, 0.1);
-      }
-
-      .note-item a[aria-current="true"] {
-        background: var(--selected);
-      }
-
-      .ni-title {
-        font-weight: 600;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .ni-snip {
-        font-size: 0.9rem;
-        color: var(--muted);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .ni-meta {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 6px;
-        margin-top: 5px;
-        font-size: 0.78rem;
-        color: var(--muted);
-      }
-
-      /* Small rounded labels (category, status) */
-      .pill {
-        padding: 1px 8px;
-        border: 1px solid currentColor;
-        border-radius: 99px;
-        font-size: 0.72rem;
-        font-weight: 600;
-      }
-
-      .pill.Work {
-        color: var(--work);
-      }
-      .pill.Personal {
-        color: var(--personal);
-      }
-      .pill.status {
-        color: var(--muted);
-      }
-      .pill.status.trash {
-        color: var(--danger);
-      }
-
-      /* Search highlight */
-      mark {
-        padding: 0 1px;
-        border-radius: 3px;
-        background: var(--accent);
-        color: #2b2200;
-      }
-
-      .empty {
-        padding: 40px 24px;
-        text-align: center;
-        color: var(--muted);
-      }
+      .notes { flex: 1; list-style: none; margin: 0; padding: 6px; overflow-y: auto; }
+      .note-item a { display: block; margin-bottom: 2px; padding: 11px 12px; border-radius: 10px; }
+      .note-item a:hover { background: rgba(127, 127, 127, 0.1); }
+      .note-item a[aria-current="true"] { background: var(--selected); }
+      .ni-title { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .ni-snip { font-size: 0.9rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .ni-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 5px; font-size: 0.78rem; color: var(--muted); }
+      
+      .pill { padding: 1px 8px; border: 1px solid currentColor; border-radius: 99px; font-size: 0.72rem; font-weight: 600; }
+      .pill.Work { color: var(--work); }
+      .pill.Personal { color: var(--personal); }
+      .pill.status { color: var(--muted); }
+      .pill.status.trash { color: var(--danger); }
+      
+      mark { padding: 0 1px; border-radius: 3px; background: var(--accent); color: #2b2200; }
+      .empty { padding: 40px 24px; text-align: center; color: var(--muted); }
 
       /* =========================================================
-       6. DETAIL PANE  (single note)
+       6. DETAIL PANE
        ========================================================= */
-      .detail-pane {
-        min-width: 0;
-        min-height: 0;
-        background: var(--bg);
-        overflow-y: auto;
-      }
+      .detail-pane { min-width: 0; min-height: 0; background: var(--bg); overflow-y: auto; }
+      .detail { max-width: 720px; margin: 0 auto; padding: 24px 28px 60px; }
+      .back-btn { display: none; margin-bottom: 6px; padding: 8px 0; border: 0; background: none; color: var(--accent); font-weight: 600; cursor: pointer; }
+      
+      .banner { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; padding: 8px 12px; border-radius: 10px; background: var(--accent-soft); font-size: 0.88rem; }
+      .banner.trash { background: rgba(179, 56, 44, 0.12); color: var(--danger); }
+      .d-title { margin: 0 0 8px; font-size: 1.8rem; line-height: 1.25; }
+      .d-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px solid var(--border); font-size: 0.88rem; color: var(--muted); }
+      .d-body { padding: 20px 22px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); font-size: 1.04rem; }
+      .d-body p { margin: 0 0 0.85em; overflow-wrap: anywhere; }
+      .d-body p:last-child { margin-bottom: 0; }
+      
+      .todo { display: flex; align-items: flex-start; gap: 12px; margin: 0 0 0.6em; }
+      .box { display: grid; place-items: center; flex: none; width: 22px; height: 22px; margin-top: 2px; border: 2px solid var(--muted); border-radius: 6px; font-size: 0.85rem; line-height: 1; }
+      .todo[aria-checked="true"] .box { background: var(--accent); border-color: var(--accent); color: #2b2200; font-weight: 800; }
+      .todo[aria-checked="true"] .t { color: var(--muted); text-decoration: line-through; }
+      
+      .ro-note { margin-top: 14px; font-size: 0.8rem; color: var(--muted); }
+      .placeholder { display: grid; place-items: center; height: 100%; padding: 30px; text-align: center; color: var(--muted); }
+      .placeholder .big { font-size: 2.4rem; }
+      .scrim { display: none; }
 
-      .detail {
-        max-width: 720px;
-        margin: 0 auto;
-        padding: 24px 28px 60px;
-      }
-
-      .back-btn {
-        display: none; /* phone only */
-        margin-bottom: 6px;
-        padding: 8px 0;
-        border: 0;
-        background: none;
-        color: var(--accent);
-        font-weight: 600;
-        cursor: pointer;
-      }
-
-      .banner {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 14px;
-        padding: 8px 12px;
-        border-radius: 10px;
-        background: var(--accent-soft);
-        font-size: 0.88rem;
-      }
-
-      .banner.trash {
-        background: rgba(179, 56, 44, 0.12);
-        color: var(--danger);
-      }
-
-      .d-title {
-        margin: 0 0 8px;
-        font-size: 1.8rem;
-        line-height: 1.25;
-      }
-
-      .d-meta {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 8px 12px;
-        margin-bottom: 18px;
-        padding-bottom: 16px;
-        border-bottom: 1px solid var(--border);
-        font-size: 0.88rem;
-        color: var(--muted);
-      }
-
-      .d-body {
-        padding: 20px 22px;
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        background: var(--surface);
-        box-shadow: var(--shadow);
-        font-size: 1.04rem;
-      }
-
-      .d-body p {
-        margin: 0 0 0.85em;
-        overflow-wrap: anywhere;
-      }
-
-      .d-body p:last-child {
-        margin-bottom: 0;
-      }
-
-      /* To-do checkbox rows (read-only) */
-      .todo {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        margin: 0 0 0.6em;
-      }
-
-      .box {
-        display: grid;
-        place-items: center;
-        flex: none;
-        width: 22px;
-        height: 22px;
-        margin-top: 2px;
-        border: 2px solid var(--muted);
-        border-radius: 6px;
-        font-size: 0.85rem;
-        line-height: 1;
-      }
-
-      .todo[aria-checked="true"] .box {
-        background: var(--accent);
-        border-color: var(--accent);
-        color: #2b2200;
-        font-weight: 800;
-      }
-
-      .todo[aria-checked="true"] .t {
-        color: var(--muted);
-        text-decoration: line-through;
-      }
-
-      .ro-note {
-        margin-top: 14px;
-        font-size: 0.8rem;
-        color: var(--muted);
-      }
-
-      /* Empty-state / "coming soon" panels */
-      .placeholder {
-        display: grid;
-        place-items: center;
-        height: 100%;
-        padding: 30px;
-        text-align: center;
-        color: var(--muted);
-      }
-
-      .placeholder .big {
-        font-size: 2.4rem;
-      }
-
-      /* Dark overlay behind the mobile drawer */
-      .scrim {
-        display: none;
-      }
+      /* Activity Data Table Styles */
+      .data-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+      .data-table th, .data-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+      .data-table th { background: rgba(127, 127, 127, 0.05); font-weight: 600; color: var(--muted); }
+      .data-table tr:last-child td { border-bottom: none; }
 
       /* =========================================================
        7. RESPONSIVE RULES
        ========================================================= */
-
-      /* --- Tablet and below: sidebar becomes a slide-out drawer --- */
       @media (max-width: 959px) {
-        .app {
-          grid-template-columns: 320px 1fr;
-        }
-
-        .menu-btn {
-          display: grid;
-          place-items: center;
-        }
-
+        .app { grid-template-columns: 320px 1fr; }
+        .menu-btn { display: grid; place-items: center; }
         .sidebar {
-          position: fixed;
-          inset: 0 auto 0 0;
-          z-index: 30;
-          width: 280px;
-          transform: translateX(-100%);
-          transition: transform 0.2s;
-          box-shadow: 4px 0 20px rgba(0, 0, 0, 0.25);
+          position: fixed; inset: 0 auto 0 0; z-index: 30; width: 280px;
+          transform: translateX(-100%); transition: transform 0.2s; box-shadow: 4px 0 20px rgba(0, 0, 0, 0.25);
         }
-
-        body.drawer-open .sidebar {
-          transform: none;
-        }
-
-        body.drawer-open .scrim {
-          display: block;
-          position: fixed;
-          inset: 0;
-          z-index: 25;
-          background: rgba(0, 0, 0, 0.4);
-        }
-      }
-
-      /* --- Phone: one screen at a time (list OR detail) --- */
-      @media (max-width: 719px) {
-        .app {
-          grid-template-columns: 1fr;
-        }
-
-        body[data-screen="list"] .detail-pane {
-          display: none;
-        }
-        body[data-screen="detail"] .list-pane {
-          display: none;
-        }
-
-        .back-btn {
-          display: block;
-        }
-
-        .detail {
-          padding: 14px 16px 50px;
-        }
-
-        .d-title {
-          font-size: 1.5rem;
-        }
-      }
-
-      /* --- (Activity, Settings): need to be done --- */
-      body[data-view="stub"] .list-pane {
-        display: none;
-      }
-
-      @media (min-width: 720px) {
-        body[data-view="stub"] .app {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      @media (min-width: 960px) {
-        body[data-view="stub"] .app {
-          grid-template-columns: 260px 1fr;
-        }
+        body.drawer-open .sidebar { transform: none; }
+        body.drawer-open .scrim { display: block; position: fixed; inset: 0; z-index: 25; background: rgba(0, 0, 0, 0.4); }
       }
 
       @media (max-width: 719px) {
-        body[data-view="stub"] .detail-pane {
-          display: block;
-        }
+        .app { grid-template-columns: 1fr; }
+        body[data-screen="list"] .detail-pane { display: none; }
+        body[data-screen="detail"] .list-pane { display: none; }
+        .back-btn { display: block; }
+        .detail { padding: 14px 16px 50px; }
+        .d-title { font-size: 1.5rem; }
       }
 
-      @media (prefers-reduced-motion: reduce) {
-        .sidebar {
-          transition: none;
-        }
-      }
+      /* Activity and Settings Layout overrides */
+      body[data-view="stub"] .list-pane { display: none; }
+      @media (min-width: 720px) { body[data-view="stub"] .app { grid-template-columns: 1fr; } }
+      @media (min-width: 960px) { body[data-view="stub"] .app { grid-template-columns: 260px 1fr; } }
+      @media (max-width: 719px) { body[data-view="stub"] .detail-pane { display: block; } }
+      @media (prefers-reduced-motion: reduce) { .sidebar { transition: none; } }
     </style>
   </head>
 
@@ -606,177 +235,45 @@
     <a href="#main" class="sr-only">Skip to notes</a>
 
     <div class="app">
-      <!-- Left: navigation -->
       <aside class="sidebar" id="sidebar" aria-label="Navigation">
-        <div class="brand">
-          <span class="brand-icon" aria-hidden="true">✎</span>
-          Navya's Notes
-        </div>
+        <div class="brand"><span class="brand-icon" aria-hidden="true">✎</span> Navya's Notes</div>
         <nav class="nav" id="nav"></nav>
         <div class="side-foot">Read-only evidence view</div>
       </aside>
       <div class="scrim" id="scrim"></div>
 
-      <!-- Middle: note list + search -->
       <section class="list-pane" id="main" aria-label="Notes list">
         <div class="list-head">
           <div class="top-row">
-            <button
-              class="menu-btn"
-              id="menuBtn"
-              aria-label="Open navigation"
-              aria-expanded="false"
-              aria-controls="sidebar"
-            >
-              ☰
-            </button>
+            <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">☰</button>
             <h1 class="list-title" id="listTitle">All Notes</h1>
             <span class="list-sub" id="listSub"></span>
           </div>
-
           <div class="search" id="searchBox" role="search">
             <span class="s-ico" aria-hidden="true">⌕</span>
             <label class="sr-only" for="q">Search notes</label>
-            <input
-              id="q"
-              type="search"
-              placeholder="Search all notes  ( / )"
-              autocomplete="off"
-            />
-            <button class="clear" id="clearQ" aria-label="Clear search">
-              ✕
-            </button>
+            <input id="q" type="search" placeholder="Search all notes  ( / )" autocomplete="off" />
+            <button class="clear" id="clearQ" aria-label="Clear search">✕</button>
           </div>
         </div>
-
         <ul class="notes" id="notes"></ul>
       </section>
 
-      <!-- Right: selected note -->
       <main class="detail-pane" id="detailPane" aria-live="polite"></main>
     </div>
 
     <script>
       /* =========================================================
-       1. CANONICAL DATA
-       Read-only: deep-frozen below and never modified.
+       1. DATA MODELS & STATE
        ========================================================= */
-      const RAW = [
-        {
-          Title: "Groceries / To-do",
-          Category: "Personal",
-          Created: "10 Oct 14:20",
-          Status: "Active",
-          Body: "☑ Oat milk\n☑ Bread (the good sourdough from the bakery)\n☐ Coffee beans (dark roast!!)\n☐ Call mom back\n☐ Pick up laundry",
-        },
-        {
-          Title: "ACM-W x CRUx Meeting",
-          Category: "Work",
-          Created: "11 Oct 09:15",
-          Status: "Active",
-          Body: "Agenda 12th Oct:\nVenue for the ATMoS workshop (F block? check with admin)\nBudget: we have like 2k left lmao.\nNeed to make sure the practice server endpoints are actually up this time before the freshers show up. Last year was a disaster.",
-        },
-        {
-          Title: "Thesis TODO",
-          Category: "Work",
-          Created: "12 Oct 11:30",
-          Status: "Active",
-          Body: "re-run the script for quasi-identifiers (dataset keeps throwing weird errors on column 4)\nflow diagram vs actual implementation (why do they look so different?? need to map this out manually)\ndump validation report in the secure GDrive folder.\nUgh k-anonymity edge cases are going to kill me.",
-        },
-        {
-          Title: "ORION Weekly Sync",
-          Category: "Work",
-          Created: "13 Oct 10:00",
-          Status: "Active",
-          Body: '13 Oct - sync w/ Dr. Arcot.\nStatus: "On track" (technically...)\nDependencies finally updated (took 3 hours)\nQ3 goals review.\nNote to self: Arcot seemed really defensive when I brought up the pipeline latency issue. Just drop it for now and push the Friday build.',
-        },
-        {
-          Title: "MIRROR Observations",
-          Category: "Work",
-          Created: "13 Oct 22:10",
-          Status: "Active",
-          Body: "13th Oct 22:00ish.\nSomething is bothering me about the latest transfer batch. The entropy scores on the data packets are way too high for an aggregated model. If the pipeline is stripping PII like it's supposed to, the variance shouldn't look like this.\nI need to pull the raw logs for the 02:00 window. It almost looks like the anonymization step is just... failing? Or being skipped entirely?",
-        },
-        {
-          Title: "Don't Forget",
-          Category: "Personal",
-          Created: "14 Oct 01:15",
-          Status: "Active",
-          Body: "shit shit shit. I shouldn't have looked. If they audit the access logs for tonight, my ID is right there. What do I do",
-        },
-        {
-          Title: "Backup Checklist",
-          Category: "Work",
-          Created: "14 Oct 01:30",
-          Status: "Active",
-          Body: "OK, plan:\nPull everything offline.\nPush dummy commits to the main Git repo so it looks normal.\nPut the real local files on the encrypted drive.\nDo NOT overwrite the version tags.",
-        },
-        {
-          Title: "Personal Journal",
-          Category: "Personal",
-          Created: "14 Oct 01:40",
-          Status: "Active",
-          Body: "Can't sleep. I swear I saw the active session indicator blink on my terminal earlier but I was the only one logged in. Is someone else monitoring the ORION server? Or my machine? I need to figure out who else holds the root keys. I feel like I'm losing my mind.",
-        },
-        {
-          Title: "Research References",
-          Category: "Work",
-          Created: "14 Oct 01:47",
-          Status: "Active",
-          Body: "Read for lit review:\nSweeney (2002) k-anonymity paper\nDwork (2006) Differential Privacy (reread section 3, didn't understand the epsilon bounding).\nWAIT Need to check these models against our ORION pipeline docs... specifically versions 1.2 vs 1.4. The math in 1.4 doesn't add up with Dwork's principles at all.",
-        },
-        {
-          Title: "Deleted Draft",
-          Category: "Work",
-          Created: "14 Oct 02:00",
-          Status: "Trash",
-          Body: "Draft to self: just wipe the MBP. Nuke the hard drive, send an email saying I'm dropping the project due to coursework, and walk away. If I erase my connection to ORION now maybe they won't care.",
-        },
-        {
-          Title: "Archived Diagram Notes",
-          Category: "Work",
-          Created: "10 Oct 15:00",
-          Status: "Archived",
-          Body: "Comparing the whiteboard photos from last month to the published MIRROR specs... they changed the diagram. The raw data flow is completely rerouted.\n\nNote to self before I forget: the app sync state is tied to the build version. Tap the version number on the about page twice to force a local override and save the real logs before the secondary device wipes them.",
-        },
-        {
-          Title: "Private Note",
-          Category: "Personal",
-          Created: "14 Oct 02:35",
-          Status: "Active (Hidden/Secret)",
-          Body: "I did it. I couldn't just sit here guessing. I used the root bypass to check the actual MIRROR logs. It's a full breach. Someone is actively siphoning the raw, un-anonymized data stream. I've saved the packet captures locally. If I go down for unauthorized access, at least I have the proof of what they were hiding.",
-        },
-      ];
+      let ALL_NOTES = [];
+      let VISIBLE_NOTES = [];
+      let ACTIVITY_DATA = [];
+      let SETTINGS_DATA = {};
+      let secretRevealed = false;
 
-      // Freeze every object so nothing can accidentally edit the evidence.
-      function deepFreeze(obj) {
-        Object.values(obj).forEach((value) => {
-          if (value && typeof value === "object") deepFreeze(value);
-        });
-        return Object.freeze(obj);
-      }
-      deepFreeze(RAW);
+      const MONTHS = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
 
-      /* =========================================================
-       2. DERIVED MODEL
-       Works on copies; RAW is never touched.
-       ========================================================= */
-      const MONTHS = {
-        Jan: 0,
-        Feb: 1,
-        Mar: 2,
-        Apr: 3,
-        May: 4,
-        Jun: 5,
-        Jul: 6,
-        Aug: 7,
-        Sep: 8,
-        Oct: 9,
-        Nov: 10,
-        Dec: 11,
-      };
-
-      // "13 Oct 22:10" -> timestamp (year is fixed at 2026 for sorting)
       function parseDate(text) {
         const m = /(\d+)\s+(\w{3})\w*\s+(\d+):(\d+)/.exec(text);
         if (!m) return 0;
@@ -784,7 +281,6 @@
         return new Date(2026, MONTHS[month], +day, +hour, +minute).getTime();
       }
 
-      // Raw status text -> one of: hidden | trash | archived | active
       function statusKey(status) {
         if (/hidden|secret/i.test(status)) return "hidden";
         if (/trash/i.test(status)) return "trash";
@@ -792,131 +288,118 @@
         return "active";
       }
 
-      const ALL_NOTES = RAW.map((note, index) => ({
-        id: String(index + 1),
-        title: note.Title,
-        category: note.Category,
-        created: note.Created,
-        ts: parseDate(note.Created),
-        status: statusKey(note.Status),
-        body: note.Body,
-      }));
-
-      // The hidden note is withheld from every list, count and search.
-      // A later step (Settings) will reveal it.
-      const VISIBLE_NOTES = ALL_NOTES.filter(
-        (note) => note.status !== "hidden",
-      ).sort((a, b) => b.ts - a.ts); // newest first
+      function updateVisibleNotes() {
+        VISIBLE_NOTES = ALL_NOTES.filter(
+          (note) => note.status !== "hidden"
+        ).sort((a, b) => b.ts - a.ts);
+      }
 
       const findNote = (id) => VISIBLE_NOTES.find((note) => note.id === id);
 
-      // Sidebar views that show a list of notes
+      // Views showing notes lists
       const VIEWS = {
-        all: {
-          label: "All Notes",
-          icon: "🗒",
-          filter: (n) => n.status === "active",
-        },
-        personal: {
-          label: "Personal",
-          icon: "🏠",
-          filter: (n) => n.status === "active" && n.category === "Personal",
-        },
-        work: {
-          label: "Work",
-          icon: "💼",
-          filter: (n) => n.status === "active" && n.category === "Work",
-        },
-        archive: {
-          label: "Archive",
-          icon: "🗄",
-          filter: (n) => n.status === "archived",
-        },
-        trash: {
-          label: "Trash",
-          icon: "🗑",
-          filter: (n) => n.status === "trash",
-        },
+        all: { label: "All Notes", icon: "🗒", filter: (n) => n.status === "active" },
+        personal: { label: "Personal", icon: "🏠", filter: (n) => n.status === "active" && n.category === "Personal" },
+        work: { label: "Work", icon: "💼", filter: (n) => n.status === "active" && n.category === "Work" },
+        archive: { label: "Archive", icon: "🗄", filter: (n) => n.status === "archived" },
+        trash: { label: "Trash", icon: "🗑", filter: (n) => n.status === "trash" },
       };
 
-      // Screens that arrive in the next build step
-      const STUBS = {
+      // Built-in App screens
+      const APP_VIEWS = {
         activity: { label: "Activity History", icon: "🕑" },
         settings: { label: "Settings", icon: "⚙" },
       };
 
       /* =========================================================
+       2. DATA LOADING (Fetch from JSON files)
+       ========================================================= */
+      async function initData() {
+        try {
+          const [notesRes, actRes, setRes] = await Promise.all([
+            fetch('notes.json'),
+            fetch('activity.json'),
+            fetch('settings.json')
+          ]);
+
+          if (!notesRes.ok || !actRes.ok || !setRes.ok) {
+            throw new Error("HTTP error when fetching JSON files.");
+          }
+
+          const rawNotes = await notesRes.json();
+          ACTIVITY_DATA = await actRes.json();
+          SETTINGS_DATA = await setRes.json();
+
+          ALL_NOTES = rawNotes.map((note, index) => ({
+            id: String(index + 1),
+            title: note.Title,
+            category: note.Category,
+            created: note.Created,
+            ts: parseDate(note.Created),
+            status: statusKey(note.Status),
+            body: note.Body,
+          }));
+
+          updateVisibleNotes();
+          onRoute(); // Proceed to initial load only after data resolves
+
+        } catch (error) {
+          console.error("Data loading error:", error);
+          document.body.innerHTML = `
+            <div style="padding: 40px; text-align: center; max-width: 600px; margin: 40px auto; background: var(--surface); border: 1px solid var(--border); border-radius: 12px;">
+              <h2 style="color: var(--danger);">Unable to Load Evidence Data</h2>
+              <p>Failed to fetch <code>notes.json</code>, <code>activity.json</code>, or <code>settings.json</code>.</p>
+              <p style="color: var(--muted); font-size: 0.9em; margin-top: 20px;">
+                Note: Local JSON files cannot be loaded if you opened this HTML file directly in your browser due to security constraints. Please open this directory using a local web server (e.g., Live Server or python -m http.server).
+              </p>
+            </div>
+          `;
+        }
+      }
+
+      /* =========================================================
        3. HELPERS
        ========================================================= */
       const $ = (id) => document.getElementById(id);
-
-      // Escape text before putting it into HTML
       function esc(text) {
-        const map = {
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#39;",
-        };
-        return text.replace(/[&<>"']/g, (ch) => map[ch]);
+        if (!text) return "";
+        const map = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
+        return String(text).replace(/[&<>"']/g, (ch) => map[ch]);
       }
-
-      // Escape text for use inside a RegExp
       const escapeRegex = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
-      // Escape text and wrap search matches in <mark>
       function highlight(text, query) {
         if (!query) return esc(text);
-
         const re = new RegExp(escapeRegex(query), "gi");
-        let out = "";
-        let last = 0;
-        let match;
-
+        let out = "", last = 0, match;
         while ((match = re.exec(text))) {
           out += esc(text.slice(last, match.index));
           out += "<mark>" + esc(match[0]) + "</mark>";
           last = match.index + match[0].length;
-          if (!match[0]) re.lastIndex++; // avoid infinite loop
+          if (!match[0]) re.lastIndex++; 
         }
         return out + esc(text.slice(last));
       }
-
       const stripCheckbox = (line) => line.replace(/^[☑☐]\s*/, "");
-      const bodyLines = (body) =>
-        body
-          .split("\n")
-          .map((l) => l.trim())
-          .filter(Boolean);
-
-      // One-line preview shown under the title in the list
+      const bodyLines = (body) => body.split("\n").map((l) => l.trim()).filter(Boolean);
       function snippet(note, query) {
         const lines = bodyLines(note.body).map(stripCheckbox);
-
         if (query) {
-          const hit = lines.find((l) =>
-            l.toLowerCase().includes(query.toLowerCase()),
-          );
+          const hit = lines.find((l) => l.toLowerCase().includes(query.toLowerCase()));
           if (hit) return hit;
         }
-
-        // Skip lines that are only a timestamp such as "13th Oct 22:00ish."
         const timestampOnly = /^\d+(st|nd|rd|th)? ?\w* ?[\d:]*ish\.?$/i;
         return lines.find((l) => !timestampOnly.test(l)) || lines[0] || "";
       }
 
       /* =========================================================
        4. STATE AND ROUTING
-       URLs look like  #/work  or  #/work/7  or  #/search/3
        ========================================================= */
       const state = { view: "all", id: null, q: "" };
 
       function parseHash() {
         const raw = location.hash.replace(/^#\/?/, "") || "all";
         const [view, id] = raw.split("/");
-
-        if (VIEWS[view] || STUBS[view] || view === "search") {
+        if (VIEWS[view] || APP_VIEWS[view] || view === "search") {
           state.view = view;
           state.id = id || null;
         } else {
@@ -929,29 +412,19 @@
         location.hash = "#/" + view + (id ? "/" + id : "");
       }
 
-      // Notes to show in the middle pane right now
       function currentList() {
         const query = state.q.trim().toLowerCase();
-
         if (query) {
-          // Search covers active, archived and trashed notes
-          return VISIBLE_NOTES.filter((n) =>
-            (n.title + "\n" + n.body).toLowerCase().includes(query),
-          );
+          return VISIBLE_NOTES.filter((n) => (n.title + "\n" + n.body).toLowerCase().includes(query));
         }
-        return VIEWS[state.view]
-          ? VISIBLE_NOTES.filter(VIEWS[state.view].filter)
-          : [];
+        return VIEWS[state.view] ? VISIBLE_NOTES.filter(VIEWS[state.view].filter) : [];
       }
 
       /* =========================================================
        5. RENDERING
        ========================================================= */
-
-      // ----- Sidebar -----
       function renderNav() {
         const count = (key) => VISIBLE_NOTES.filter(VIEWS[key].filter).length;
-
         const link = (key, view, total) => {
           const isCurrent = !state.q && state.view === key;
           return `
@@ -961,7 +434,6 @@
             ${total != null ? `<span class="count">${total}</span>` : ""}
           </a>`;
         };
-
         $("nav").innerHTML =
           link("all", VIEWS.all, count("all")) +
           `<div class="nav-label">Categories</div>` +
@@ -971,44 +443,27 @@
           link("archive", VIEWS.archive, count("archive")) +
           link("trash", VIEWS.trash, count("trash")) +
           `<div class="nav-label">App</div>` +
-          link("activity", STUBS.activity) +
-          link("settings", STUBS.settings);
+          link("activity", APP_VIEWS.activity) +
+          link("settings", APP_VIEWS.settings);
       }
 
-      // ----- Middle pane: list of notes -----
       function renderList() {
         const query = state.q.trim();
         const list = currentList();
 
-        $("listTitle").textContent = query
-          ? "Search"
-          : VIEWS[state.view]?.label || "All Notes";
-        $("listSub").textContent = query
-          ? `${list.length} result${list.length === 1 ? "" : "s"}`
-          : `${list.length} note${list.length === 1 ? "" : "s"}`;
+        $("listTitle").textContent = query ? "Search" : VIEWS[state.view]?.label || "All Notes";
+        $("listSub").textContent = query ? `${list.length} result${list.length === 1 ? "" : "s"}` : `${list.length} note${list.length === 1 ? "" : "s"}`;
         $("searchBox").classList.toggle("has-q", !!state.q);
 
         if (!list.length) {
-          $("notes").innerHTML = `<li class="empty">${
-            query ? `No notes match “${esc(query)}”.` : "Nothing here."
-          }</li>`;
+          $("notes").innerHTML = `<li class="empty">${query ? `No notes match “${esc(query)}”.` : "Nothing here."}</li>`;
           return;
         }
-
-        $("notes").innerHTML = list
-          .map((note) => {
-            const route = query ? "search" : state.view;
-            const isSelected = state.id === note.id;
-
-            const statusPill =
-              note.status === "active"
-                ? ""
-                : `
-          <span class="pill status ${note.status}">
-            ${note.status === "archived" ? "Archived" : "Trash"}
-          </span>`;
-
-            return `
+        $("notes").innerHTML = list.map((note) => {
+          const route = query ? "search" : state.view;
+          const isSelected = state.id === note.id;
+          const statusPill = note.status === "active" ? "" : `<span class="pill status ${note.status}">${note.status === "archived" ? "Archived" : "Trash"}</span>`;
+          return `
           <li class="note-item">
             <a href="#/${route}/${note.id}" ${isSelected ? 'aria-current="true"' : ""}>
               <div class="ni-title">${highlight(note.title, query)}</div>
@@ -1020,47 +475,115 @@
               </div>
             </a>
           </li>`;
-          })
-          .join("");
+        }).join("");
       }
 
-      // ----- Right pane: note body (paragraphs + read-only checkboxes) -----
       function renderBody(note, query) {
-        return bodyLines(note.body)
-          .map((line) => {
-            const todo = /^([☑☐])\s*(.*)$/.exec(line);
-
-            if (todo) {
-              const checked = todo[1] === "☑";
-              return `
+        return bodyLines(note.body).map((line) => {
+          const todo = /^([☑☐])\s*(.*)$/.exec(line);
+          if (todo) {
+            const checked = todo[1] === "☑";
+            return `
             <div class="todo" role="checkbox" aria-checked="${checked}" aria-readonly="true" tabindex="0">
               <span class="box" aria-hidden="true">${checked ? "✓" : ""}</span>
               <span class="t">${highlight(todo[2], query)}</span>
             </div>`;
-            }
-            return `<p>${highlight(line, query)}</p>`;
-          })
-          .join("");
+          }
+          return `<p>${highlight(line, query)}</p>`;
+        }).join("");
       }
 
-      // ----- Right pane: whole note screen -----
       function renderDetail() {
         const query = state.q.trim();
         const pane = $("detailPane");
 
-        // "Coming soon" screens
-        const stub = STUBS[state.view];
-        if (stub) {
+        // 1. Activity Screen
+        if (state.view === "activity") {
           pane.innerHTML = `
-          <div class="placeholder"><div>
-            <div class="big" aria-hidden="true">${stub.icon}</div>
-            <h2>${stub.label}</h2>
-            <p>${stub.text}</p>
-          </div></div>`;
+          <article class="detail">
+            <button class="back-btn" id="backBtn">‹ Back</button>
+            <h2 class="d-title">Activity History</h2>
+            <div class="d-body" style="padding: 0; overflow-x: auto;">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>Device ID</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${ACTIVITY_DATA.map(act => `
+                    <tr>
+                      <td style="white-space: nowrap;">${esc(act.timestamp)}</td>
+                      <td>${esc(act.device_id)}</td>
+                      <td>${esc(act.action)}</td>
+                    </tr>
+                  `).join("")}
+                </tbody>
+              </table>
+            </div>
+          </article>`;
+          $("backBtn").onclick = () => go(query ? "search" : "all");
+          pane.scrollTop = 0;
           return;
         }
 
-        // Nothing selected yet
+        // 2. Settings Screen (with Clue Mechanism)
+        if (state.view === "settings") {
+          pane.innerHTML = `
+          <article class="detail">
+            <button class="back-btn" id="backBtn">‹ Back</button>
+            <h2 class="d-title">Settings</h2>
+            <div class="d-body">
+              <p><strong>Sync Enabled:</strong> ${SETTINGS_DATA.sync_enabled ? "Yes" : "No"}</p>
+              <p><strong>Last Sync:</strong> ${esc(SETTINGS_DATA.last_sync)}</p>
+              <p>
+                <strong>Version:</strong> 
+                <span id="versionLabel" tabindex="0" role="button" aria-label="App Version: double tap or press enter twice to force local override" style="cursor: pointer; user-select: none;">
+                  ${esc(SETTINGS_DATA.version)}
+                </span>
+              </p>
+            </div>
+            ${secretRevealed ? `<div style="margin-top: 20px; padding: 12px; background: rgba(217, 164, 0, 0.15); color: var(--accent); border-radius: 8px; font-weight: 600;">⚠️ Local override engaged. Hidden private logs restored to list.</div>` : ""}
+          </article>`;
+          
+          $("backBtn").onclick = () => go(query ? "search" : "all");
+          pane.scrollTop = 0;
+
+          // Double tap logic for version number
+          let taps = 0;
+          let tapTimer;
+          const vLabel = $("versionLabel");
+
+          const triggerReveal = () => {
+            taps++;
+            if (taps === 2) {
+              if (!secretRevealed) {
+                secretRevealed = true;
+                // Change hidden note's status so it shows up in "All Notes" & "Personal"
+                const secretNote = ALL_NOTES.find(n => n.status === "hidden");
+                if (secretNote) secretNote.status = "active";
+                updateVisibleNotes();
+                render(); 
+              }
+              taps = 0;
+            }
+            clearTimeout(tapTimer);
+            tapTimer = setTimeout(() => { taps = 0; }, 400); 
+          };
+
+          vLabel.addEventListener("click", triggerReveal);
+          vLabel.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              triggerReveal();
+            }
+          });
+          return;
+        }
+
+        // 3. Normal Note Detail
         const note = state.id && findNote(state.id);
         if (!note) {
           pane.innerHTML = `
@@ -1071,13 +594,7 @@
           return;
         }
 
-        const banner =
-          note.status === "archived"
-            ? `<div class="banner">🗄 This note is archived.</div>`
-            : note.status === "trash"
-              ? `<div class="banner trash">🗑 This note is in Trash.</div>`
-              : "";
-
+        const banner = note.status === "archived" ? `<div class="banner">🗄 This note is archived.</div>` : note.status === "trash" ? `<div class="banner trash">🗑 This note is in Trash.</div>` : "";
         pane.innerHTML = `
         <article class="detail">
           <button class="back-btn" id="backBtn">‹ Back</button>
@@ -1090,30 +607,23 @@
           <div class="d-body">${renderBody(note, query)}</div>
           <div class="ro-note">Read-only · notes cannot be edited in this app.</div>
         </article>`;
-
         $("backBtn").onclick = () => go(query ? "search" : state.view);
         pane.scrollTop = 0;
       }
 
-      // ----- Redraw everything -----
       function render() {
-        const isStub = !!STUBS[state.view];
-
-        // These attributes drive the responsive CSS
-        document.body.dataset.view = isStub ? "stub" : state.view;
-        document.body.dataset.screen = state.id || isStub ? "detail" : "list";
+        const isAppView = !!APP_VIEWS[state.view];
+        document.body.dataset.view = isAppView ? "stub" : state.view;
+        document.body.dataset.screen = state.id || isAppView ? "detail" : "list";
 
         renderNav();
         renderList();
         renderDetail();
 
-        // Close the mobile drawer after any navigation
         document.body.classList.remove("drawer-open");
         $("menuBtn").setAttribute("aria-expanded", "false");
 
-        const selected = document.querySelector(
-          '.note-item a[aria-current="true"]',
-        );
+        const selected = document.querySelector('.note-item a[aria-current="true"]');
         if (selected) selected.scrollIntoView({ block: "nearest" });
       }
 
@@ -1124,74 +634,47 @@
         document.body.classList.remove("drawer-open");
         $("menuBtn").setAttribute("aria-expanded", "false");
       }
+      function clearSearch() { state.q = ""; $("q").value = ""; }
 
-      function clearSearch() {
-        state.q = "";
-        $("q").value = "";
-      }
-
-      // URL changed (link click, Back button, etc.)
       function onRoute() {
         parseHash();
-
-        // Keep the search text only while we are on the search route
-        if (
-          state.view !== "search" &&
-          state.q &&
-          !location.hash.includes("/search")
-        ) {
+        if (state.view !== "search" && state.q && !location.hash.includes("/search")) {
           clearSearch();
         }
         render();
       }
       window.addEventListener("hashchange", onRoute);
 
-      // Typing in the search box
       $("q").addEventListener("input", (event) => {
         state.q = event.target.value;
-
         if (state.q.trim()) {
           if (state.view !== "search") {
-            state.view = "search";
-            state.id = null;
+            state.view = "search"; state.id = null;
             history.replaceState(null, "", "#/search");
           }
         } else if (state.view === "search") {
-          state.view = "all";
-          state.id = null;
+          state.view = "all"; state.id = null;
           history.replaceState(null, "", "#/all");
         }
         render();
       });
 
-      // "✕" button in the search box
-      $("clearQ").addEventListener("click", () => {
-        clearSearch();
-        go("all");
-        $("q").focus();
-      });
-
-      // Hamburger button and overlay (tablet / phone)
+      $("clearQ").addEventListener("click", () => { clearSearch(); go("all"); $("q").focus(); });
       $("menuBtn").addEventListener("click", () => {
         const open = document.body.classList.toggle("drawer-open");
         $("menuBtn").setAttribute("aria-expanded", String(open));
       });
       $("scrim").addEventListener("click", closeDrawer);
 
-      // Keyboard shortcuts:  "/" focuses search,  Esc closes drawer or clears search
       document.addEventListener("keydown", (event) => {
         const isTyping = /input|textarea/i.test(document.activeElement.tagName);
-
         if (event.key === "/" && !isTyping) {
-          event.preventDefault();
-          $("q").focus();
+          event.preventDefault(); $("q").focus();
         } else if (event.key === "Escape") {
           if (document.body.classList.contains("drawer-open")) {
-            closeDrawer();
-            $("menuBtn").focus();
+            closeDrawer(); $("menuBtn").focus();
           } else if (state.q) {
-            clearSearch();
-            go("all");
+            clearSearch(); go("all");
           }
         }
       });
@@ -1199,7 +682,7 @@
       /* =========================================================
        7. START
        ========================================================= */
-      onRoute();
+      initData();
     </script>
   </body>
 </html>
