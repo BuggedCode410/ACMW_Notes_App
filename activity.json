@@ -1,0 +1,38 @@
+[
+  {
+    "timestamp": "13 Oct 22:10",
+    "device_id": "NAVYA-MBP",
+    "note_id": "n5",
+    "action": "Edited MIRROR Observations"
+  },
+  {
+    "timestamp": "14 Oct 01:47",
+    "device_id": "NAVYA-MBP",
+    "note_id": "n9",
+    "action": "Opened Research References"
+  },
+  {
+    "timestamp": "14 Oct 02:19",
+    "device_id": "UNKNOWN-DEVICE-7",
+    "note_id": "n7",
+    "action": "Opened Backup Checklist"
+  },
+  {
+    "timestamp": "14 Oct 02:23",
+    "device_id": "UNKNOWN-DEVICE-7",
+    "note_id": null,
+    "action": "Attempted archive access"
+  },
+  {
+    "timestamp": "14 Oct 02:35",
+    "device_id": "NAVYA-MBP",
+    "note_id": "secret",
+    "action": "Created Private Note"
+  },
+  {
+    "timestamp": "14 Oct 02:42",
+    "device_id": "NAVYA-MBP",
+    "note_id": null,
+    "action": "Disabled sync"
+  }
+]

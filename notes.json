@@ -1,0 +1,86 @@
+[
+  {
+    "Title": "Groceries / To-do",
+    "Category": "Personal",
+    "Created": "10 Oct 14:20",
+    "Status": "Active",
+    "Body": "☑ Oat milk\n☑ Bread (the good sourdough from the bakery)\n☐ Coffee beans (dark roast!!)\n☐ Call mom back\n☐ Pick up laundry"
+  },
+  {
+    "Title": "ACM-W x CRUx Meeting",
+    "Category": "Work",
+    "Created": "11 Oct 09:15",
+    "Status": "Active",
+    "Body": "Agenda 12th Oct:\nVenue for the ATMoS workshop (F block? check with admin)\nBudget: we have like 2k left lmao.\nNeed to make sure the practice server endpoints are actually up this time before the freshers show up. Last year was a disaster."
+  },
+  {
+    "Title": "Thesis TODO",
+    "Category": "Work",
+    "Created": "12 Oct 11:30",
+    "Status": "Active",
+    "Body": "re-run the script for quasi-identifiers (dataset keeps throwing weird errors on column 4)\nflow diagram vs actual implementation (why do they look so different?? need to map this out manually)\ndump validation report in the secure GDrive folder.\nUgh k-anonymity edge cases are going to kill me."
+  },
+  {
+    "Title": "ORION Weekly Sync",
+    "Category": "Work",
+    "Created": "13 Oct 10:00",
+    "Status": "Active",
+    "Body": "13 Oct - sync w/ Dr. Arcot.\nStatus: \"On track\" (technically...)\nDependencies finally updated (took 3 hours)\nQ3 goals review.\nNote to self: Arcot seemed really defensive when I brought up the pipeline latency issue. Just drop it for now and push the Friday build."
+  },
+  {
+    "Title": "MIRROR Observations",
+    "Category": "Work",
+    "Created": "13 Oct 22:10",
+    "Status": "Active",
+    "Body": "13th Oct 22:00ish.\nSomething is bothering me about the latest transfer batch. The entropy scores on the data packets are way too high for an aggregated model. If the pipeline is stripping PII like it's supposed to, the variance shouldn't look like this.\nI need to pull the raw logs for the 02:00 window. It almost looks like the anonymization step is just... failing? Or being skipped entirely?"
+  },
+  {
+    "Title": "Don't Forget",
+    "Category": "Personal",
+    "Created": "14 Oct 01:15",
+    "Status": "Active",
+    "Body": "shit shit shit. I shouldn't have looked. If they audit the access logs for tonight, my ID is right there. What do I do"
+  },
+  {
+    "Title": "Backup Checklist",
+    "Category": "Work",
+    "Created": "14 Oct 01:30",
+    "Status": "Active",
+    "Body": "OK, plan:\nPull everything offline.\nPush dummy commits to the main Git repo so it looks normal.\nPut the real local files on the encrypted drive.\nDo NOT overwrite the version tags."
+  },
+  {
+    "Title": "Personal Journal",
+    "Category": "Personal",
+    "Created": "14 Oct 01:40",
+    "Status": "Active",
+    "Body": "Can't sleep. I swear I saw the active session indicator blink on my terminal earlier but I was the only one logged in. Is someone else monitoring the ORION server? Or my machine? I need to figure out who else holds the root keys. I feel like I'm losing my mind."
+  },
+  {
+    "Title": "Research References",
+    "Category": "Work",
+    "Created": "14 Oct 01:47",
+    "Status": "Active",
+    "Body": "Read for lit review:\nSweeney (2002) k-anonymity paper\nDwork (2006) Differential Privacy (reread section 3, didn't understand the epsilon bounding).\nWAIT Need to check these models against our ORION pipeline docs... specifically versions 1.2 vs 1.4. The math in 1.4 doesn't add up with Dwork's principles at all."
+  },
+  {
+    "Title": "Deleted Draft",
+    "Category": "Work",
+    "Created": "14 Oct 02:00",
+    "Status": "Trash",
+    "Body": "Draft to self: just wipe the MBP. Nuke the hard drive, send an email saying I'm dropping the project due to coursework, and walk away. If I erase my connection to ORION now maybe they won't care."
+  },
+  {
+    "Title": "Archived Diagram Notes",
+    "Category": "Work",
+    "Created": "10 Oct 15:00",
+    "Status": "Archived",
+    "Body": "Comparing the whiteboard photos from last month to the published MIRROR specs... they changed the diagram. The raw data flow is completely rerouted.\n\nNote to self before I forget: the app sync state is tied to the build version. Tap the version number on the about page twice to force a local override and save the real logs before the secondary device wipes them."
+  },
+  {
+    "Title": "Private Note",
+    "Category": "Personal",
+    "Created": "14 Oct 02:35",
+    "Status": "Active (Hidden/Secret)",
+    "Body": "I did it. I couldn't just sit here guessing. I used the root bypass to check the actual MIRROR logs. It's a full breach. Someone is actively siphoning the raw, un-anonymized data stream. I've saved the packet captures locally. If I go down for unauthorized access, at least I have the proof of what they were hiding."
+  }
+]
