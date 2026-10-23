@@ -18,7 +18,7 @@
     "Category": "Work",
     "Created": "12 Oct 11:30",
     "Status": "Active",
-    "Body": "re-run the script for quasi-identifiers (dataset keeps throwing weird errors on column 4)\nflow diagram vs actual implementation (why do they look so different?? need to map this out manually)\ndump validation report in the secure GDrive folder.\nUgh k-anonymity edge cases are going to kill me."
+    "Body": "☐ re-run the script for quasi-identifiers (dataset keeps throwing weird errors on column 4)\n☐ flow diagram vs actual implementation (why do they look so different?? need to map this out manually)\n☑ dump validation report in the secure GDrive folder.\nUgh k-anonymity edge cases are going to kill me."
   },
   {
     "Title": "ORION Weekly Sync",
@@ -46,7 +46,7 @@
     "Category": "Work",
     "Created": "14 Oct 01:30",
     "Status": "Active",
-    "Body": "OK, plan:\nPull everything offline.\nPush dummy commits to the main Git repo so it looks normal.\nPut the real local files on the encrypted drive.\nDo NOT overwrite the version tags."
+    "Body": "OK, plan:\n☑ Pull everything offline.\n☑ Push dummy commits to the main Git repo so it looks normal.\n☑ Put the real local files on the encrypted drive.\n☐ Do NOT overwrite the version tags."
   },
   {
     "Title": "Personal Journal",
@@ -74,7 +74,7 @@
     "Category": "Work",
     "Created": "10 Oct 15:00",
     "Status": "Archived",
-    "Body": "Comparing the whiteboard photos from last month to the published MIRROR specs... they changed the diagram. The raw data flow is completely rerouted.\n\nNote to self before I forget: the app sync state is tied to the build version. Tap the version number on the about page twice to force a local override and save the real logs before the secondary device wipes them."
+    "Body": "Comparing the whiteboard photos from last month to the published MIRROR specs... they changed the diagram. The raw data flow is completely rerouted.\n\nNote to self before I forget: the version number remembers the second device."
   },
   {
     "Title": "Private Note",

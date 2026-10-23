@@ -531,6 +531,9 @@
 
         // 2. Settings Screen (with Clue Mechanism)
         if (state.view === "settings") {
+          const secretNoteObj = ALL_NOTES.find(n => n.title === "Private Note" || /private/i.test(n.title));
+          const secretNoteId = secretNoteObj ? secretNoteObj.id : "12";
+
           pane.innerHTML = `
           <article class="detail">
             <button class="back-btn" id="backBtn">‹ Back</button>
@@ -540,12 +543,19 @@
               <p><strong>Last Sync:</strong> ${esc(SETTINGS_DATA.last_sync)}</p>
               <p>
                 <strong>Version:</strong> 
-                <span id="versionLabel" tabindex="0" role="button" aria-label="App Version: double tap or press enter twice to force local override" style="cursor: pointer; user-select: none;">
+                <span id="versionLabel" tabindex="0" role="button" aria-label="App Version" style="cursor: pointer; user-select: none;">
                   ${esc(SETTINGS_DATA.version)}
                 </span>
               </p>
             </div>
-            ${secretRevealed ? `<div style="margin-top: 20px; padding: 12px; background: rgba(217, 164, 0, 0.15); color: var(--accent); border-radius: 8px; font-weight: 600;">⚠️ Local override engaged. Hidden private logs restored to list.</div>` : ""}
+            ${secretRevealed ? `
+            <div style="margin-top: 20px; padding: 14px 16px; background: rgba(217, 164, 0, 0.15); border: 1px solid var(--accent); border-radius: 10px;">
+              <div style="font-weight: 700; color: var(--accent); margin-bottom: 4px;">⚠️ Local override engaged</div>
+              <p style="margin: 0 0 12px; font-size: 0.92rem;">Hidden private log has been restored to your notes.</p>
+              <a href="#/personal/${secretNoteId}" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: var(--accent); color: #2b2200; font-weight: 600; font-size: 0.9rem; border-radius: 8px; text-decoration: none;">
+                Open Private Note →
+              </a>
+            </div>` : ""}
           </article>`;
           
           $("backBtn").onclick = () => go(query ? "search" : "all");
