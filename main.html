@@ -173,7 +173,18 @@
        ========================================================= */
       .detail-pane { min-width: 0; min-height: 0; background: var(--bg); overflow-y: auto; }
       .detail { max-width: 720px; margin: 0 auto; padding: 24px 28px 60px; }
-      .back-btn { display: none; margin-bottom: 6px; padding: 8px 0; border: 0; background: none; color: var(--accent); font-weight: 600; cursor: pointer; }
+      .detail-top-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+      .back-btn {
+        display: none; align-items: center; gap: 6px; padding: 7px 12px;
+        border: 1px solid var(--border); border-radius: 8px; background: var(--surface);
+        color: var(--accent); font-weight: 600; font-size: 0.9rem; cursor: pointer;
+      }
+      .back-btn:hover { background: rgba(127, 127, 127, 0.08); }
+      .sub-menu-btn {
+        display: none; width: 38px; height: 38px; border: 1px solid var(--border);
+        border-radius: 9px; background: var(--surface); font-size: 1.15rem; cursor: pointer;
+      }
+      .sub-menu-btn:hover { background: rgba(127, 127, 127, 0.08); }
       
       .banner { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; padding: 8px 12px; border-radius: 10px; background: var(--accent-soft); font-size: 0.88rem; }
       .banner.trash { background: rgba(179, 56, 44, 0.12); color: var(--danger); }
@@ -197,7 +208,14 @@
       .data-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
       .data-table th, .data-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
       .data-table th { background: rgba(127, 127, 127, 0.05); font-weight: 600; color: var(--muted); }
+      .data-table tr:hover td { background: rgba(127, 127, 127, 0.04); }
       .data-table tr:last-child td { border-bottom: none; }
+      .act-link {
+        color: var(--work); font-weight: 500; text-decoration: underline;
+        text-underline-offset: 3px; display: inline-flex; align-items: center; gap: 4px;
+      }
+      .act-link:hover { color: var(--accent); }
+      .act-arrow { font-size: 0.85em; text-decoration: none; }
 
       /* =========================================================
        7. RESPONSIVE RULES
@@ -211,13 +229,15 @@
         }
         body.drawer-open .sidebar { transform: none; }
         body.drawer-open .scrim { display: block; position: fixed; inset: 0; z-index: 25; background: rgba(0, 0, 0, 0.4); }
+        body[data-view="stub"] .back-btn { display: inline-flex; }
+        body[data-view="stub"] .sub-menu-btn { display: grid; place-items: center; }
       }
 
       @media (max-width: 719px) {
         .app { grid-template-columns: 1fr; }
         body[data-screen="list"] .detail-pane { display: none; }
         body[data-screen="detail"] .list-pane { display: none; }
-        .back-btn { display: block; }
+        .back-btn { display: inline-flex; }
         .detail { padding: 14px 16px 50px; }
         .d-title { font-size: 1.5rem; }
       }
@@ -391,6 +411,15 @@
         return lines.find((l) => !timestampOnly.test(l)) || lines[0] || "";
       }
 
+      function findNoteForActivity(act) {
+        if (!act) return null;
+        if (act.note_id) {
+          const note = ALL_NOTES.find(n => n.id === act.note_id || n.id === String(act.note_id).replace(/^n/, ""));
+          if (note) return note;
+        }
+        return ALL_NOTES.find(n => act.action && act.action.toLowerCase().includes(n.title.toLowerCase()));
+      }
+
       /* =========================================================
        4. STATE AND ROUTING
        ========================================================= */
@@ -497,11 +526,24 @@
         const query = state.q.trim();
         const pane = $("detailPane");
 
+        const wireSubMenu = () => {
+          const subBtn = $("subViewMenuBtn");
+          if (subBtn) {
+            subBtn.onclick = () => {
+              const open = document.body.classList.toggle("drawer-open");
+              subBtn.setAttribute("aria-expanded", String(open));
+            };
+          }
+        };
+
         // 1. Activity Screen
         if (state.view === "activity") {
           pane.innerHTML = `
           <article class="detail">
-            <button class="back-btn" id="backBtn">‹ Back</button>
+            <div class="detail-top-nav">
+              <button class="back-btn" id="backBtn">‹ Back to notes</button>
+              <button class="sub-menu-btn" id="subViewMenuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+            </div>
             <h2 class="d-title">Activity History</h2>
             <div class="d-body" style="padding: 0; overflow-x: auto;">
               <table class="data-table">
@@ -513,18 +555,30 @@
                   </tr>
                 </thead>
                 <tbody>
-                  ${ACTIVITY_DATA.map(act => `
+                  ${ACTIVITY_DATA.map(act => {
+                    const targetNote = findNoteForActivity(act);
+                    const isSecret = targetNote && (targetNote.status === "hidden" || /private/i.test(targetNote.title));
+                    const canLink = targetNote && (!isSecret || secretRevealed);
+                    let actionHtml = esc(act.action);
+
+                    if (canLink) {
+                      const targetRoute = targetNote.status === "archived" ? "archive" : targetNote.status === "trash" ? "trash" : (targetNote.category ? targetNote.category.toLowerCase() : "all");
+                      actionHtml = `<a href="#/${targetRoute}/${targetNote.id}" class="act-link" title="Open ${esc(targetNote.title)}">${esc(act.action)} <span class="act-arrow" aria-hidden="true">↗</span></a>`;
+                    }
+
+                    return `
                     <tr>
                       <td style="white-space: nowrap;">${esc(act.timestamp)}</td>
-                      <td>${esc(act.device_id)}</td>
-                      <td>${esc(act.action)}</td>
-                    </tr>
-                  `).join("")}
+                      <td><code>${esc(act.device_id)}</code></td>
+                      <td>${actionHtml}</td>
+                    </tr>`;
+                  }).join("")}
                 </tbody>
               </table>
             </div>
           </article>`;
           $("backBtn").onclick = () => go(query ? "search" : "all");
+          wireSubMenu();
           pane.scrollTop = 0;
           return;
         }
@@ -536,7 +590,10 @@
 
           pane.innerHTML = `
           <article class="detail">
-            <button class="back-btn" id="backBtn">‹ Back</button>
+            <div class="detail-top-nav">
+              <button class="back-btn" id="backBtn">‹ Back to notes</button>
+              <button class="sub-menu-btn" id="subViewMenuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+            </div>
             <h2 class="d-title">Settings</h2>
             <div class="d-body">
               <p><strong>Sync Enabled:</strong> ${SETTINGS_DATA.sync_enabled ? "Yes" : "No"}</p>
@@ -559,6 +616,7 @@
           </article>`;
           
           $("backBtn").onclick = () => go(query ? "search" : "all");
+          wireSubMenu();
           pane.scrollTop = 0;
 
           // Double tap logic for version number
@@ -607,7 +665,7 @@
         const banner = note.status === "archived" ? `<div class="banner">🗄 This note is archived.</div>` : note.status === "trash" ? `<div class="banner trash">🗑 This note is in Trash.</div>` : "";
         pane.innerHTML = `
         <article class="detail">
-          <button class="back-btn" id="backBtn">‹ Back</button>
+          <button class="back-btn" id="backBtn">‹ Back to notes</button>
           ${banner}
           <h2 class="d-title">${highlight(note.title, query)}</h2>
           <div class="d-meta">
@@ -631,7 +689,9 @@
         renderDetail();
 
         document.body.classList.remove("drawer-open");
-        $("menuBtn").setAttribute("aria-expanded", "false");
+        $("menuBtn")?.setAttribute("aria-expanded", "false");
+        const sub = $("subViewMenuBtn");
+        if (sub) sub.setAttribute("aria-expanded", "false");
 
         const selected = document.querySelector('.note-item a[aria-current="true"]');
         if (selected) selected.scrollIntoView({ block: "nearest" });
@@ -642,7 +702,9 @@
        ========================================================= */
       function closeDrawer() {
         document.body.classList.remove("drawer-open");
-        $("menuBtn").setAttribute("aria-expanded", "false");
+        $("menuBtn")?.setAttribute("aria-expanded", "false");
+        const sub = $("subViewMenuBtn");
+        if (sub) sub.setAttribute("aria-expanded", "false");
       }
       function clearSearch() { state.q = ""; $("q").value = ""; }
 
